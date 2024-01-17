@@ -29,27 +29,27 @@ class ArticleDetailPage extends StatelessWidget {
                 children: [
                   Text(
                     article.description,
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     article.title,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     'Date: ${article.publishedAt}',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     'Author: ${article.author}',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     article.content,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
