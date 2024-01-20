@@ -18,7 +18,7 @@ class NewsListPage extends StatefulWidget {
 }
 
 class _NewsListPageState extends State<NewsListPage> {
-  List<BottomNavigationBarItem> _bottomNavBarItems = [
+  final List<BottomNavigationBarItem>  _bottomNavBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.news : Icons.public),
       label: 'Headline',
