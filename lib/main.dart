@@ -1,6 +1,7 @@
 import 'package:dicoding_news_app/data/model/article.dart';
 
 import 'package:dicoding_news_app/common/styles.dart';
+import 'package:dicoding_news_app/data/model/articles.dart';
 import 'package:dicoding_news_app/ui/detail_page.dart';
 import 'package:dicoding_news_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       routes: {
         NewsListPage.routeName: (context) => const NewsListPage(),
         ArticleDetailPage.routeName: (context) => ArticleDetailPage(
-              article: ModalRoute.of(context)?.settings.arguments as Article,
+              article: ModalRoute.of(context)?.settings.arguments as Articlism,
             ),
         ArticleWebView.routeName: (context) => ArticleWebView(
               url: ModalRoute.of(context)?.settings.arguments as String,

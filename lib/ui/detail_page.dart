@@ -1,4 +1,5 @@
 import 'package:dicoding_news_app/data/model/article.dart';
+import 'package:dicoding_news_app/data/model/articles.dart';
 import 'package:dicoding_news_app/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -6,7 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class ArticleDetailPage extends StatelessWidget {
   static const routeName = '/article_detail';
 
-  final Article article;
+  final Articlism article;
 
   const ArticleDetailPage({Key? key, required this.article}) : super(key: key);
 
@@ -19,16 +20,21 @@ class ArticleDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Hero(
-                tag: article.urlToImage,
-                child: Image.network(article.urlToImage)),
+            article.urlToImage == null
+                ? Container(
+                    height: 200,
+                    child: const Icon(Icons.error),
+                  )
+                : Hero(
+                    tag: article.urlToImage!,
+                    child: Image.network(article.urlToImage!)),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    article.description,
+                    article.description ?? "",
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const Divider(color: Colors.grey),
@@ -48,7 +54,7 @@ class ArticleDetailPage extends StatelessWidget {
                   ),
                   const Divider(color: Colors.grey),
                   Text(
-                    article.content,
+                    article.content ?? "",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 10),
