@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 
 class CardArticle extends StatelessWidget {
   final Articlism articlism;
-  final Function onPressed;
-
-  const CardArticle({Key? key, required this.articlism, required this.onPressed}) : super(key: key);
+  
+  const CardArticle({Key? key, required this.articlism, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

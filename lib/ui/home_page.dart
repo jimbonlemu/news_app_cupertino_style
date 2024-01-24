@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dicoding_news_app/data/api/api_service.dart';
+import 'package:dicoding_news_app/provider/news_provider.dart';
 import 'package:dicoding_news_app/ui/article_list_page.dart';
 import 'package:dicoding_news_app/ui/settings_page.dart';
 import 'package:dicoding_news_app/common/styles.dart';
@@ -7,6 +9,7 @@ import 'package:dicoding_news_app/widgets/platform_widget.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NewsListPage extends StatefulWidget {
   static const routeName = '/home_page';
@@ -17,8 +20,8 @@ class NewsListPage extends StatefulWidget {
   State<NewsListPage> createState() => _NewsListPageState();
 }
 
-class _NewsListPageState extends State<NewsListPage> {  
-  final List<BottomNavigationBarItem>  _bottomNavBarItems = [
+class _NewsListPageState extends State<NewsListPage> {
+  final List<BottomNavigationBarItem> _bottomNavBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.news : Icons.public),
       label: 'Headline',
@@ -30,8 +33,10 @@ class _NewsListPageState extends State<NewsListPage> {
   ];
 
   final List<Widget> _listWidget = [
-    ArticleListPage(),
-    SettingsPage(),
+    ChangeNotifierProvider<NewsProvider>(
+        create: (context) => NewsProvider(apiService: ApiService()),
+        child:  ArticleListPage()),
+    const SettingsPage(),
   ];
   int _bottomNavIndex = 0;
 
@@ -70,7 +75,7 @@ class _NewsListPageState extends State<NewsListPage> {
           case 1:
             return const SettingsPage();
           default:
-            return const ArticleListPage();
+            return  ArticleListPage();
         }
       },
     );
