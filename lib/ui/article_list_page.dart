@@ -1,9 +1,5 @@
-import 'package:dicoding_news_app/data/api/api_service.dart';
-import 'package:dicoding_news_app/data/model/article.dart';
-import 'package:dicoding_news_app/data/model/articles.dart';
 import 'package:dicoding_news_app/provider/news_provider.dart';
 import 'package:dicoding_news_app/widgets/card_article.dart';
-import 'package:dicoding_news_app/ui/article_detail_page.dart';
 import 'package:dicoding_news_app/widgets/platform_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +8,7 @@ import 'package:provider/provider.dart';
 class ArticleListPage extends StatelessWidget {
   static const routeName = '/article_list';
 
-  ArticleListPage({Key? key}) : super(key: key);
-
-  // late Future<ArticlismsResult> _article;
-
-  // @override
-
-
+ const  ArticleListPage({Key? key}) : super(key: key);
   Widget _buildTheList() {
     return Consumer<NewsProvider>(
       builder: (context, state, _) {

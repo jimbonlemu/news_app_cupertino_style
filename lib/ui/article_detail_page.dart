@@ -1,5 +1,4 @@
 import 'package:dicoding_news_app/common/navigations.dart';
-import 'package:dicoding_news_app/data/model/article.dart';
 import 'package:dicoding_news_app/data/model/articles.dart';
 import 'package:dicoding_news_app/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
