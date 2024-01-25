@@ -9,7 +9,8 @@ class ArticlismsResult {
   final int totalResults;
   final List<Articlism> articlisms;
 
-  factory ArticlismsResult.fromJson(Map<String, dynamic> json) => ArticlismsResult(
+  factory ArticlismsResult.fromJson(Map<String, dynamic> json) =>
+      ArticlismsResult(
         status: json["status"],
         totalResults: json["totalResults"],
         articlisms: List<Articlism>.from((json["articles"] as List)
@@ -20,9 +21,15 @@ class ArticlismsResult {
                 article.publishedAt != null &&
                 article.content != null)),
       );
+
+  Map<String, dynamic> toJson() => {
+    "status" : status,
+    "totalResults" : totalResults,
+    "articles" : List<dynamic>.from(articlisms.map((e) => e.toJson())),
+  };
 }
 
-class Articlism{
+class Articlism {
   Articlism({
     required this.author,
     required this.title,
@@ -50,4 +57,14 @@ class Articlism{
         publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"],
       );
+
+      Map<String, dynamic> toJson() => {
+        "author": author,
+        "title": title,
+        "description": description,
+        "url": url,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt?.toIso8601String(),
+        "content": content,
+      };
 }

@@ -2,7 +2,7 @@ import 'package:dicoding_news_app/data/model/article.dart';
 
 import 'package:dicoding_news_app/common/styles.dart';
 import 'package:dicoding_news_app/data/model/articles.dart';
-import 'package:dicoding_news_app/ui/detail_page.dart';
+import 'package:dicoding_news_app/ui/article_detail_page.dart';
 import 'package:dicoding_news_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
 
