@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:isolate';
 import 'package:dicoding_news_app/data/api/api_service.dart';
 import 'package:dicoding_news_app/utils/notification_helper.dart';
+import 'package:dicoding_news_app/main.dart';
 
 final ReceivePort port = ReceivePort();
 
@@ -29,8 +30,8 @@ class BackgroundService {
     final NotificationHelper notificationHelper = NotificationHelper();
     var result = await ApiService().topHeadLines();
 
-    // await notificationHelper.showNotification(
-    //     flutterLocalNotificationsPlugin, result);
+    await notificationHelper.showNotification(
+        flutterLocalNotificationsPlugin, result);
 
     _uiSendPort ??= IsolateNameServer.lookupPortByName(_isolateName);
     _uiSendPort?.send(null);
