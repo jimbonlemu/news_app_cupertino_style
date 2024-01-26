@@ -19,7 +19,7 @@ class NotificationHelper {
   Future<void> initNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
-        AndroidInitializationSettings('app_icon');
+        const AndroidInitializationSettings('app_icon');
 
     var initializationSettingsIOS = const DarwinInitializationSettings(
       requestAlertPermission: false,
@@ -36,7 +36,7 @@ class NotificationHelper {
         onDidReceiveNotificationResponse: (NotificationResponse details) {
       final payLoad = details.payload;
       if (payLoad != null) {
-        print('notification payload :' + payLoad);
+        print('notification payload :$payLoad');
       }
       selectNotificationSubject.add(payLoad ?? 'empty payload');
     });

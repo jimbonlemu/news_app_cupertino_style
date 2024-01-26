@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _listWidget = [
     ChangeNotifierProvider<NewsProvider>(
         create: (context) => NewsProvider(apiService: ApiService()),
-        child: ArticleListPage()),
+        child: const ArticleListPage()),
     ChangeNotifierProvider<SchedulingProvider>(
         create: (_) => SchedulingProvider(), child: const  SettingsPage()),
   ];
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
           case 1:
             return const SettingsPage();
           default:
-            return ArticleListPage();
+            return const ArticleListPage();
         }
       },
     );

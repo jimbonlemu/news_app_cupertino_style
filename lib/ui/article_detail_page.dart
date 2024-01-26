@@ -21,9 +21,9 @@ class ArticleDetailPage extends StatelessWidget {
         child: Column(
           children: [
             article.urlToImage == null
-                ? Container(
+                ? const SizedBox(
                     height: 200,
-                    child: const Icon(Icons.error),
+                    child: Icon(Icons.error),
                   )
                 : Hero(
                     tag: article.urlToImage!,
