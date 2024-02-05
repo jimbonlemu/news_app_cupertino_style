@@ -20,7 +20,7 @@ class NewsProvider extends ChangeNotifier {
 
   ArticlismsResult get result => _articleResult;
 
-  ResultState get   state => _state;
+  ResultState get  state => _state;
 
   Future<dynamic> _fetchAllArticles() async {
     try {
