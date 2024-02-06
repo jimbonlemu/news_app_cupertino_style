@@ -2,8 +2,10 @@ import 'dart:io';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:dicoding_news_app/common/navigations.dart';
 import 'package:dicoding_news_app/data/api/api_service.dart';
+import 'package:dicoding_news_app/data/db/database_helper.dart';
 import 'package:dicoding_news_app/data/model/articles.dart';
 import 'package:dicoding_news_app/data/preferences/preferences_helper.dart';
+import 'package:dicoding_news_app/provider/database_provider.dart';
 import 'package:dicoding_news_app/provider/news_provider.dart';
 import 'package:dicoding_news_app/provider/preferences_provider.dart';
 import 'package:dicoding_news_app/provider/scheduling_provider.dart';
@@ -48,10 +50,15 @@ class MyApp extends StatelessWidget {
           create: (context) => SchedulingProvider(),
         ),
         ChangeNotifierProvider(
-            create: (context) => PreferencesProvider(
-                  preferencesHelper: PreferencesHelper(
-                      sharedPreferences: SharedPreferences.getInstance()),
-                )),
+          create: (context) => PreferencesProvider(
+            preferencesHelper: PreferencesHelper(
+                sharedPreferences: SharedPreferences.getInstance()),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) =>
+              DatabaseProvider(databaseHelper: DatabaseHelper()),
+        ),
       ],
       child: Consumer<PreferencesProvider>(
         builder: (context, providerThemeData, child) {

@@ -27,8 +27,11 @@ class _HomePageState extends State<HomePage> {
       label: 'Headline',
     ),
     BottomNavigationBarItem(
-        icon: Icon(Platform.isIOS ? CupertinoIcons.bookmark : Icons.bookmark),
-        label: 'Bookmark'),
+      icon: Icon(Platform.isIOS
+          ? CupertinoIcons.bookmark
+          : Icons.collections_bookmark),
+      label: 'Bookmark',
+    ),
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.settings : Icons.settings),
       label: 'Settings',
