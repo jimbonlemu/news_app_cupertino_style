@@ -41,9 +41,9 @@ class BookMarkPage extends StatelessWidget {
       builder: (context, dbProvider, child) {
         if (dbProvider.state == ResultState.hasData) {
           return ListView.builder(
-            itemCount: dbProvider.bookmark.length,
+            itemCount: dbProvider.bookmarks.length,
             itemBuilder: (context, index) {
-              return CardArticle(articlism: dbProvider.bookmark[index]);
+              return CardArticle(articlism: dbProvider.bookmarks[index]);
             },
           );
         } else {

@@ -10,44 +10,46 @@ class DatabaseHelper {
   }
 
   factory DatabaseHelper() => _instance ?? DatabaseHelper._internal();
-  static const String _tblBookMark = 'bookmarks';
+
+  static const String _tblBookmark = 'bookmarks';
 
   Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
     var db = openDatabase(
       '$path/newsapp.db',
       onCreate: (db, version) async {
-        await db.execute('''CREATE TABLE $_tblBookMark (
-          url TEXT PRIMARY KEY.
-          author TEXT,
-          title TEXT,
-          description TEXT,
-          urlToImage TEXT,
-          publishedAt TEXT,
-          content TEXT
-          )
-          ''');
+        await db.execute('''CREATE TABLE $_tblBookmark (
+             url TEXT PRIMARY KEY,
+             author TEXT,
+             title TEXT,
+             description TEXT,
+             urlToImage TEXT,
+             publishedAt TEXT,
+             content TEXT
+           )     
+        ''');
       },
       version: 1,
     );
+
     return db;
   }
 
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await _initializeDb();
-    }
+    _database ??= await _initializeDb();
+
     return _database;
   }
 
-  Future<void> insertBookmark(Articlism artilsm) async {
+  Future<void> insertBookmark(Articlism article) async {
     final db = await database;
-    await db!.insert(_tblBookMark, artilsm.toJson());
+    await db!.insert(_tblBookmark, article.toJson());
   }
 
   Future<List<Articlism>> getBookmarks() async {
     final db = await database;
-    List<Map<String, dynamic>> results = await db!.query(_tblBookMark);
+    List<Map<String, dynamic>> results = await db!.query(_tblBookmark);
+
     return results.map((res) => Articlism.fromJson(res)).toList();
   }
 
@@ -55,7 +57,7 @@ class DatabaseHelper {
     final db = await database;
 
     List<Map<String, dynamic>> results = await db!.query(
-      _tblBookMark,
+      _tblBookmark,
       where: 'url = ?',
       whereArgs: [url],
     );
@@ -69,8 +71,9 @@ class DatabaseHelper {
 
   Future<void> removeBookmark(String url) async {
     final db = await database;
+
     await db!.delete(
-      _tblBookMark,
+      _tblBookmark,
       where: 'url = ?',
       whereArgs: [url],
     );
